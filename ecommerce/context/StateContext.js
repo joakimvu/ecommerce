@@ -11,9 +11,14 @@ export const StateContext = ({ children }) => {
   const [quantity, setQuantity] = useState(1);
 
   const onAdd = (product, quantity) => {
+    console.log("onAdd product", product);
+    console.log("onAdd quantity", quantity);
+
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
     );
+
+    console.log(cartItems);
 
     if (checkProductInCart) {
       setTotalPrice(
@@ -50,6 +55,7 @@ export const StateContext = ({ children }) => {
     <Context.Provider
       value={{
         showCart,
+        setShowCart,
         cartItems,
         totalPrice,
         totalQuantities,
